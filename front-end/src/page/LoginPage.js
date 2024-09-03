@@ -1,62 +1,38 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState, useEffect } from 'react';
+import Spinner from '../components/Spinner';
+import './../assets/css/LoginSignup.css';
 
-function LoginPage() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const navigate = useNavigate();
-
-    const handleLogin = async (e) => {
-        e.preventDefault();
-
-        const data = {
-            email: email,
-            password: password,
-        };
-
-        try {
-            const response = await axios.post('http://127.0.0.1:5000/login', data);
-            if (response.status === 200) {
-                // Redirect to /predict after successful login
-                navigate('/predict');
-            }
-        } catch (error) {
-            console.error("There was an error logging in!", error);
-        }
-    };
+const LoginPage = () => {
+    const [action, setAction] = useState('Sign Up');
 
     return (
-        <div className="container shadow p-3 mt-5 col-6">
-            <h2 className="mb-4">Login</h2>
-            <form onSubmit={handleLogin}>
-                <div className="mb-3">
-                    <label htmlFor="email" className="form-label">Email</label>
-                    <input 
-                        type="email" 
-                        className="form-control" 
-                        id="email" 
-                        value={email} 
-                        onChange={(e) => setEmail(e.target.value)} 
-                        required 
-                    />
+        <div className='container'>
+            <div className='header'>
+                <div className='text text-white'>{action}</div>
+            </div>
+            <div className='inputs'>
+                {action === "Log In" ? null : (
+                    <div className='input'>
+                        {/* <img src={user} alt='' /> */}
+                        <input placeholder='User Id' type='text' />
+                    </div>
+                )}
+                <div className='input'>
+                    {/* <img src={email} alt='' /> */}
+                    <input placeholder='Email ID' type='email' />
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="password" className="form-label">Password</label>
-                    <input 
-                        type="password" 
-                        className="form-control" 
-                        id="password" 
-                        value={password} 
-                        onChange={(e) => setPassword(e.target.value)} 
-                        required 
-                    />
+                <div className='input'>
+                    {/* <img src={password} alt='' /> */}
+                    <input placeholder='Password' type='password' />
                 </div>
-                <button type="submit" className="btn btn-primary">Login</button>
-            </form>
+            </div>
+            <div className="forgot-password">Lost Password? <span>click here</span></div>
+            <div className="sumbit-container">
+                <div className={action === "Log In" ? "submit gray" : "submit"} onClick={() => { setAction("Sign Up") }}>Sign Up</div>
+                <div className={action === "Sign Up" ? "submit gray" : "submit"} onClick={() => { setAction("Log In") }}>Log In</div>
+            </div>
         </div>
     );
-}
+};
 
 export default LoginPage;

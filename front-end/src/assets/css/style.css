@@ -1,0 +1,12 @@
+.custom-bg {
+    background-image: linear-gradient(to right, #044278, #144a59); /* Gradient background */
+    color: white; /* White text color */
+    font-size: 18px; /* Set font size */
+    font-weight: bold; /* Make text bold */
+    text-align: center; /* Center-align text */
+}
+
+.custom-card {
+    border-radius: "40px";
+    background-image: linear-gradient(to left, #ffffff, #ffffff); /* Gradient background */
+}

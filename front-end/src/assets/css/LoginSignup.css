@@ -1,0 +1,110 @@
+
+
+.container {
+    width: 300px;
+    padding: 20px;
+    /* background-color: #ffffff; */
+    border-radius: 10px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box; /* Ensures padding is included in the container's width */
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.underline {
+    width: 50px;
+    height: 4px;
+    background-color: #ff5722;
+    margin: 8px auto;
+}
+
+.inputs {
+    width: 100%; /* Make inputs section full width */
+    margin-bottom: 20px;
+}
+
+.input {
+    position: relative;
+    margin-bottom: 15px;
+    width: 100%; /* Ensure input containers are full width */
+}
+
+.input img {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+}
+
+.input input {
+    width: 100%;
+    padding: 10px 10px 10px 40px; /* Adding left padding to make space for the icon */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensure padding is included in input width */
+}
+
+/* Placeholder styling */
+.input input::placeholder {
+    color: #aaa; /* Light gray color for the placeholder */
+    opacity: 1; /* Ensure the placeholder is fully opaque */
+}
+
+.forgot-password {
+    text-align: center;
+    font-size: 12px;
+    color: #007bff;
+    margin-bottom: 20px;
+    width: 100%; /* Ensure the forgot-password section is full width */
+}
+
+.forgot-password span {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.sumbit-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit {
+    width: 48%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit:first-child {
+    margin-right: 4%; /* Adds a small space between the two buttons */
+}
+
+.submit:hover {
+    background-color: #0056b3;
+}
+
+.gray {
+    background: #EAEAEA;
+    color: #676767;
+}

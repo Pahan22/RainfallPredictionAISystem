@@ -1,0 +1,26 @@
+
+Rain=================
+
+Heavy Rainfall - Range: Over 300 mm per month ------ Animation 1
+Normal Rainfall - Range: 100 mm to 300 mm per month ---- Animation 2
+Sunny (Dry) Period - Range: Less than 100 mm per month ---- Animation 3
+Extremely High Rainfall -Range: Above 400 mm per month ------- Animation 4
+
+     
+
+
+Temperature============
+
+
+Cool Temperature - Range: Below 20°C 
+
+Moderate (Mild) Temperature - Range: 20°C to 25°C 
+
+Warm Temperature - Range: 25°C to 30°C
+
+Hot Temperature - Range: Above 30°C 
+
+    Extremely Hot Conditions - Range: Above 35°C
+
+    Extremely Cold Conditions - Range: Below 10°C 
+
