@@ -75,7 +75,7 @@ function PredictionPage() {
   };
 
   const imgStyles = {
-    width: '25%',
+    width: '90%',
     maxWidth: '500px',
     height: 'auto',
     borderRadius: '10px',
@@ -104,7 +104,7 @@ function PredictionPage() {
 
       // Update temperature display
       document.querySelector('.rainfall').textContent = data.rainfall;
-      document.querySelector('.temperature').textContent = data.temperature + '°C';
+      document.querySelector('.temperature').textContent = Math.round(data.temperature) + '°C';
 
 
 
@@ -114,7 +114,7 @@ function PredictionPage() {
       Object.assign(imgElement.style, imgStyles);
       if (data.rainfall > 400) {
         imgElement.src = require(`./../assets/animations/Animation4.gif`);
-      } else if(data.rainfall > 300) {
+      } else if (data.rainfall > 300) {
         imgElement.src = require(`./../assets/animations/Animation1.gif`);
       } else if (data.rainfall > 100) {
         imgElement.src = require(`./../assets/animations/Animation2.gif`);
@@ -174,31 +174,43 @@ function PredictionPage() {
       <MDBContainer className="h-100">
         <MDBRow className="justify-content-center align-items-center">
           <MDBCol md="10" lg="6" xl="6">
-            <MDBCard className="custom-card text-black" style={{ borderRadius: "40px" }}>
+            <MDBCard className="custom-card text-black" style={{ borderRadius: "40px", height: "300px" }}>
               <div className="card-body text-center p-5">
-                <div className="my-2 weather-animation h-100">
-                  <img className="image" src={require(`./../assets/animations/Animation-waiting.gif`)} alt="Animated GIF" style={imgStyles} />
-                </div>
-                <MDBTypography tag="h5">Rainfall : <strong className="rainfall">0</strong></MDBTypography>
-                <MDBTypography tag="h5">Temperature : <strong className="temperature">0 °C</strong></MDBTypography>
-                {/* <p>
-                  Temperature: <strong className="temperature">-1.08 °C</strong>
-                </p>
-                <p>
-                  Temperature: <strong className="temperature">-1.08 °C</strong>
-                </p> */}
-                {/* <MDBTypography tag="h5">Snowy</MDBTypography> */}
+                <MDBRow className="justify-content-center align-items-center h-100">
+                  <MDBCol xl={6}>
+                    <div className="weather-animation h-100">
+                      <img className="image" src={require(`./../assets/animations/Animation-waiting.gif`)} alt="Animated GIF" style={imgStyles} />
+                    </div>
+                  </MDBCol>
+                  <MDBCol xl={6}>
+                    <div className="d-flex flex-column text-center">
+                      <MDBTypography
+                        tag="h6"
+                        className="display-4 mb-0 font-weight-bold temperature"
+                        style={{ color: "#1C2331" }}
+                      >
+                        {" "}
+                        0°C{" "}
+                      </MDBTypography>
+                      <span className="small" style={{ color: "#868B94" }}>
+                        <MDBTypography tag="h5">Rainfall: <strong className="rainfall">0</strong></MDBTypography>
+                      </span>
+                    </div>
+                    {/* <MDBTypography tag="h1"><strong className="temperature">0 °C</strong></MDBTypography>
+                    <MDBTypography tag="h5">Rainfall: <strong className="rainfall">0</strong></MDBTypography> */}
+                  </MDBCol>
+                </MDBRow>
               </div>
             </MDBCard>
           </MDBCol>
           <MDBCol md="10" lg="6" xl="6">
-            <MDBCard className="custom-card text-white" style={{ borderRadius: "40px" }}>
-              <div className="card-body p-2">
+            <MDBCard className="custom-card text-white" style={{ borderRadius: "40px", height: "300px" }}>
+              <div className="card-body p-2 h-100 d-flex align-items-center justify-content-center">
                 <MapContainer
                   center={[lat, lon]}
                   zoom={13}
                   scrollWheelZoom={false}
-                  style={{ height: "300px", width: "100%", borderRadius: "40px" }}
+                  style={{ height: "100%", width: "100%", borderRadius: "40px" }}
                 >
                   <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -216,6 +228,7 @@ function PredictionPage() {
           </MDBCol>
         </MDBRow>
       </MDBContainer>
+
     </section>
   );
 }

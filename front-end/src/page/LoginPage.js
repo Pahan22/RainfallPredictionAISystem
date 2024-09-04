@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Spinner from '../components/Spinner';
-import './../assets/css/LoginSignup.css';
+// import './../assets/css/LoginSignup.css';
 
 const LoginPage = () => {
     const [action, setAction] = useState('Sign Up');
