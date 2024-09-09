@@ -14,14 +14,18 @@ function App() {
     <Router>
       <div className="App">
         <header className="navbar navbar-expand-lg navbar-light custom-bg ps-5">
-          <a className="navbar-brand text-white" href="/">
-            <img
-              src={require('./assets/img/Logo.jpg')}
-              alt="Logo"
-              style={{ height: '60px', marginRight: '30px' }}
-            />
-          </a>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <div className="container">
+            <div className="d-flex justify-content-center w-100">
+              <a className="navbar-brand text-white" href="/login">
+                <img
+                  src={require('./assets/img/Logo.jpg')}
+                  alt="Logo"
+                  style={{ height: '60px', marginRight: '30px' }}
+                />
+              </a>
+            </div>
+          </div>
+          {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
@@ -35,11 +39,11 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link  text-white" to="/predict">Prediction</Link>
               </li>
-              {/* <li className="nav-item">
-                                <Link className="nav-link" to="/logout">Logout</Link>
-                            </li> */}
+              <li className="nav-item">
+                <Link className="nav-link" to="/logout">Logout</Link>
+              </li>
             </ul>
-          </div>
+          </div> */}
         </header>
 
         <div className="container mt-5">
