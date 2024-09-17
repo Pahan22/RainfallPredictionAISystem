@@ -3,8 +3,12 @@ import pickle
 import xgboost as xgb
 import firebase_admin
 from firebase_admin import credentials, firestore, initialize_app
+import random
 
-model = pickle.load(open(r'saved_model.pkl','rb'))
+with open('saved_model.pkl','rb') as file:
+    data = pickle.load(file)
+    model = data['model']
+    scaler = data['scaler']
 
 app = Flask(__name__)
 
@@ -15,23 +19,50 @@ db = firestore.client()
 @app.route('/predict_data', methods=['POST'])
 def predict_data():
     try:
+        # Get JSON data from the request
         data = request.get_json()
+        
+        # Extract input values
         longitude = data.get('longitude')
         latitude = data.get('latitude')
         month = data.get('month')
 
-        pred = model.predict([[float(longitude),float(latitude),int(month)]])
+        # Convert to float and int
+        longitude = float(longitude)
+        latitude = float(latitude)
+        month = int(month)
 
-        rainfall = round(float(pred[0][0]), 2)
-        temperature = round(float(pred[0][1]), 2)
+        # Prepare the input data
+        new_data = [[longitude, latitude, month]]
 
+        # Scale the input data
+        new_data_scaled = scaler.transform(new_data)
+
+        # Predict using the loaded model
+        pred = model.predict(new_data_scaled)
+
+        # Extract predictions
+        rainfall = round(float(pred[0][0]))
+        temperature = round(float(pred[0][1]))
+
+        # Ensure non-negative rainfall
+        if rainfall < 0:
+            rainfall = 2
+
+        # Prepare the result
         result = {
             "location": f"Longitude: {longitude}, Latitude: {latitude}",
             "month": month,
             "rainfall": rainfall,
             "temperature": temperature,
-            "prediction": "Sample Prediction"  
+            "prediction": "Sample Prediction"  # Adjust this if needed
         }
+
+        # Print for debugging
+        print(f"Longitude: {longitude}")
+        print(f"Latitude: {latitude}")
+        print(f"Temperature: {temperature}")
+        print(f"Rainfall: {rainfall}")
 
         return jsonify(result), 200
     except Exception as e:
